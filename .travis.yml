@@ -11,15 +11,15 @@ script:
   - docker run -e CI=true multi-container-app-test npm test
 
 after_success:
-  - docker build -t multi-container-client ./client
-  - docker build -t multi-container-ngnix ./ngnix
-  - docker build -t multi-container-server ./server
-  - docker build -t multi-container-worker ./worker
+  - docker build -t schakkadocker/multi-container-client ./client
+  - docker build -t schakkadocker/multi-container-ngnix ./ngnix
+  - docker build -t schakkadocker/multi-container-server ./server
+  - docker build -t schakkadocker/multi-container-worker ./worker
   # Login to GitBug
   - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID" --password-stdin
   #Push those above images to docker hub
-  - docker push multi-container-client
-  - docker push multi-container-ngnix
-  - docker push multi-container-server
-  - docker push multi-container-worker
+  - docker push schakkadocker/multi-container-client
+  - docker push schakkadocker/multi-container-ngnix
+  - docker push schakkadocker/multi-container-server
+  - docker push schakkadocker/multi-container-worker
 
