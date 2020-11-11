@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion":2,
+    "containerDefinitions":[
+        {
+            "name": "client",
+            "image": "schakkadocker/multi-container-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "schakkadocker/multi-container-server",
+            "hostname":"api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "schakkadocker/multi-container-worker",
+            "hostname":"worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "schakkadocker/multi-container-nginx",
+            "hostname":"nginx",
+            "essential": true,
+            "portMappings" :[
+                {
+                    "hostPort":"80",
+                    "containerPort":"80"
+                }
+            ]
+        }
+    ]
+
+
+}

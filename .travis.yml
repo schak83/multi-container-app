@@ -23,3 +23,15 @@ after_success:
   - docker push schakkadocker/multi-container-server
   - docker push schakkadocker/multi-container-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-container-app
+  env: MultiContainerApp-env
+  bucket_name: elasticbeanstalk-us-east-1-565087585555
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
